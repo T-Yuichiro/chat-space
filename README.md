@@ -33,7 +33,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :messages
-- has_many :chatgroups, through:  :users_chatgroups
+- has_many :groups, through:  :users_groups
 
 ## messagesテーブル
 |Column|Type|Options|
@@ -41,28 +41,28 @@ Things you may want to cover:
 |text|text||
 |image|text||
 |user_id|integer|null: false, foreign_key: true|
-|chatgroup_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :chatgroup
+- belongs_to :group
 
-## chatgroupsテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :users,  through:  :users_chatgroups
+- has_many :users,  through:  :users_groups
 - has_many  :messages
 
-## users_chatgroupsテーブル
+## users_groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
-|chatgroup_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :chatgroup
+- belongs_to :group
