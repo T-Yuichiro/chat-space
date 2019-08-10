@@ -15,5 +15,8 @@
  */
 
  @import "reset";
+ @import "config/variable";
  @import "font-awesome";
- @import "messages";
+ @import "modules/wrapper";
+ @import "modules/chat";
+ @import "modules/side_bar";
