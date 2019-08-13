@@ -60,3 +60,6 @@ gem "font-awesome-rails"
 
 # devise install
 gem 'devise'
+
+gem 'carrierwave'
+gem 'mini_magick'
