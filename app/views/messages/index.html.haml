@@ -17,7 +17,7 @@
             メンバー名
       .right-header
         .right-header__button
-          = link_to 'Edit', edit_group_path(current_user)
+          = link_to 'Edit', edit_group_path(@group)
     .messages
       = render @messages
       
