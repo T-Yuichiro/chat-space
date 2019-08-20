@@ -2,6 +2,7 @@
 
 .chat {
   width: calc(100% - 300px);
+  height: 100vh;
   .header {
     box-sizing: border-box;
     height: 100px;
@@ -32,6 +33,12 @@
       line-height: 40px;
       margin-top: 28px;
       padding: 0 20px;
+      &__button {
+        color: $light_blue;
+        a {
+          text-decoration: none;
+        }
+      }
     }
   }
 
@@ -69,28 +76,26 @@
 
   .form {
     background-color: #DDDDDD;
-    // border-boxを用いて、paddingとborderの幅を要素の幅と高さに含める
     box-sizing: border-box;
     height: 90px;
-    padding: 20px 40px 20px 50px;
-    // ブラウザ最下部に固定
-    position: fixed;
-    bottom: 0;
-    width: calc(100% - 300px);
-    &__message-input {
+    padding: 20px 50px 20px 40px;
+    &__message {
       border: none;
       float: left;
       height: 50px;
       width: calc(100% - 150px);
     }
-    &__upload-label {
+    &__mask {
       background-color: $white;
       float: left;
       height: 50px;
       padding-right: 10px;
-      .fa.fa-picture-o {
+      &__image {
         font-size: 20px;
         line-height: 50px;
+      }
+      .hidden {
+        display: none;
       }
     }
     &__submit {

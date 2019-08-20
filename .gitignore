@@ -17,3 +17,6 @@
 .byebug_history
 # 投稿された画像がコミットされないようにする
 public/uploads/*
+
+# DS_Storeがコミットされないようにする
+.DS_Store
