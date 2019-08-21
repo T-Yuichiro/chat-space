@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.where('nickname LIKE(?)', "%#{params[:keyword]}%")
   end
 
   def update
