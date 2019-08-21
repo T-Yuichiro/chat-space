@@ -5,6 +5,10 @@ class UsersController < ApplicationController
 
   def index
     @user = User.where('nickname LIKE(?)', "%#{params[:keyword]}%")
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def update
