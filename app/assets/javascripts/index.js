@@ -1,5 +1,6 @@
 $(function() {
   $("#user-search-field").on("keyup", function() {
-    console.log('OK');
+    var input = $("#user-search-field").val();
+    console.log(input);
   });
 });
