@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def index
+  end
+
   def update
     if current_user.update(user_params) # 保存をできた場合
       redirect_to root_path
