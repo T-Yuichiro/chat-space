@@ -8,10 +8,6 @@ $(function() {
     return html;
   };
  
-  $(document).on('click', '.chat-group-user__btn--add', function() {
-    console.log('ok');
-  });
-
   $(document).on('turbolinks:load', function(){
     $("#user-search-field").on("keyup", function() {
       var input = $('#user-search-field').val();
@@ -37,4 +33,28 @@ $(function() {
       })
     });
   });
+
+  function clickHTML(user){
+    var userId = user.attr("data-user-id");
+    var html =`<div class='chat-group-user'>
+                <input name='group[user_ids][]' type='hidden' value='${userId}'>
+                <p class='chat-group-user__name'>${user.attr("data-user-name")}</p>
+                <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+               </div>`
+    return html;
+  };
+
+  // 追加ボタンを押すと、そのユーザーをチャットメンバーに加える
+  $(document).on('click', '.chat-group-user__btn--add', function() {
+    var userName = $(this).data('user-name');
+    var userId = $(this).data('user-id');
+    $(this).parent().remove();
+    var html =`<div class='chat-group-user'>
+                <input name='group[user_ids][]' type='hidden' value="${userId}">
+                <p class='chat-group-user__name'>${userName}</p>
+                <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+               </div>`
+    $('#chat-group-users').append(html);
+  });
+
 });
