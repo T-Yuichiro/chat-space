@@ -44,7 +44,7 @@ $(function() {
     return html;
   };
 
-  // 追加ボタンを押すと、そのユーザーをチャットメンバーに加える
+  // 追加ボタンを押すと、そのユーザーがチャットメンバーに追加される
   $(document).on('click', '.chat-group-user__btn--add', function() {
     var userName = $(this).data('user-name');
     var userId = $(this).data('user-id');
@@ -55,6 +55,11 @@ $(function() {
                 <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
                </div>`
     $('#chat-group-users').append(html);
+  });
+
+  // 削除ボタンを押すと、そのユーザーがチャットメンバーから削除される
+  $(document).on('click', '.js-remove-btn', function(){
+    $(this).parent().remove();
   });
 
 });
