@@ -7,6 +7,10 @@ $(function() {
                 </div>`
     return html;
   };
+ 
+  $(document).on('click', '.chat-group-user__btn--add', function() {
+    console.log('ok');
+  });
 
   $(document).on('turbolinks:load', function(){
     $("#user-search-field").on("keyup", function() {
