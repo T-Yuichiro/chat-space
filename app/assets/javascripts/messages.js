@@ -48,7 +48,7 @@ $(function(){
     last_message_id = $('.message').last().data('id');
 
     $.ajax({
-      url: '/api/messages',
+      url: 'api/messages',
       type: 'get',
       dataType: 'json',
       data: {id: last_message_id}
@@ -58,6 +58,7 @@ $(function(){
       messages.forEach(function(message){
         insertHTML += buildHTML(message);
         $('.messages').append(insertHTML);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
       });
     })
     .fail(function() {
