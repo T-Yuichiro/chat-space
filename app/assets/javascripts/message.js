@@ -1,7 +1,7 @@
 $(function(){
   function buildHTML(message){
     var MessageImage = (message.image) ? `<img class="lower-message__image" src="${message.image}">` : '';
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -14,7 +14,7 @@ $(function(){
                     <p class="lower-message__content">
                      ${message.content}
                     </p>
-                    ${MessageImage}
+                     ${MessageImage}
                   </div>
                 </div>`
     return html;
@@ -40,6 +40,34 @@ $(function(){
     })
     .fail(function(){
       alert('error');
+    });
+  });
+
+  // 自動更新のメソッドを定義する
+  var reloadMessages = function() {
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+    last_message_id = $('.message:last').data("message-id");
+    var last_message_id = $('.message:last').data('message-id');
+
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      data: {id: last_message_id},
+      dataType: 'json'
     })
-  })
+
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message){
+        insertHTML = buildHTML(message);
+        $('.messages').append(insertHTML);
+        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight});
+      });
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    });
+   };
+  };
+  setInterval(reloadMessages, 5000);
 });
