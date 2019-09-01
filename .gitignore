@@ -20,3 +20,6 @@ public/uploads/*
 
 # DS_Storeがコミットされないようにする
 .DS_Store
+
+# AWSのアクセスキーがコミットされないようにする
+config/secrets.yml
