@@ -8,31 +8,31 @@ $(function() {
     return html;
   };
  
-  $(document).on('turbolinks:load', function(){
-    $("#user-search-field").on("keyup", function() {
-      var input = $('#user-search-field').val();
-      $.ajax({
-        type: 'GET',
-        url: '/users',
-        data: { keyword: input },
-        dataType: 'json'
-      })
+  
+  $("#user-search-field").on("keyup", function() {
+    var input = $('#user-search-field').val();
+    $.ajax({
+      type: 'GET',
+      url: '/users',
+      data: { keyword: input },
+      dataType: 'json'
+    })
 
-      .done(function(users) {
-        $(".user-search-result").empty();
-        if (users.length !== 0) {
-          users.forEach(function(user){
-            var html = appendUser(user);
-            $(".user-search-result").append(html);
-          });
-        }
-      })
+    .done(function(users) {
+      $(".user-search-result").empty();
+      if (users.length !== 0) {
+        users.forEach(function(user){
+          var html = appendUser(user);
+          $(".user-search-result").append(html);
+        });
+      }
+    })
 
-      .fail(function(){
-        alert('通信に失敗しました');
-      })
-    });
+    .fail(function(){
+      alert('通信に失敗しました');
+    })
   });
+  
 
   function clickHTML(user){
     var userId = user.attr("data-user-id");
